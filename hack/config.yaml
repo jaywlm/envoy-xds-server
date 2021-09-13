@@ -1,0 +1,18 @@
+name: test-cluster
+spec:
+  listeners:
+    - name: test-cluster
+      address: 0.0.0.0
+      port: 10000
+      routes:
+        - name: r1
+          prefix: /
+          clusters: 
+            - test-a
+  clusters:
+    - name: test-a
+      endpoints:
+        - address: 192.168.50.4
+          port: 85
+        - address: 192.168.50.4
+          port: 86
